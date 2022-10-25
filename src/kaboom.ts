@@ -1,13 +1,13 @@
 
-import { KaboomCoreCtx, KaboomCtx, KaboomOpt, } from "./types"
+import { KaboomCoreCtx, KaboomCtx, KaboomOpt, KaboomNetworkCtx } from "./types"
 
 import kaboomBrowser from "./kaboomBrowser"
-import kaboomCore from "./kaboomCore"
+import kaboomServer from "./kaboomServer"
 
 // only exports one kaboom() which contains all the state
-export default (gopt: KaboomOpt = {}): KaboomCoreCtx | KaboomCtx => {
+export default (gopt: KaboomOpt = {}): KaboomCoreCtx | KaboomNetworkCtx => {
 	if (gopt.headless) {
-		return kaboomCore(gopt)
+		return kaboomServer(gopt)
 	} else {
 		return kaboomBrowser(gopt)
 	}

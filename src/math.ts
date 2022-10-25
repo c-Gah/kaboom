@@ -180,7 +180,7 @@ export class Color {
 
 	static fromHSL(h: number, s: number, l: number) {
 
-		if (s == 0){
+		if (s == 0) {
 			return rgb(255 * l, 255 * l, 255 * l)
 		}
 
@@ -189,7 +189,7 @@ export class Color {
 			if (t > 1) t -= 1
 			if (t < 1 / 6) return p + (q - p) * 6 * t
 			if (t < 1 / 2) return q
-			if (t < 2 / 3) return p + (q - p) * (2/3 - t) * 6
+			if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6
 			return p
 		}
 

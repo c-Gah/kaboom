@@ -1720,9 +1720,9 @@ export default (gopt: KaboomOpt = {}): KaboomCoreCtx => {
             // app.loopID = requestAnimationFrame(frame)
             app.loopID = requestHeadlessFrame(frame)
         }
-        
-		app.realTime = Date.now()
-		frame(app.realTime)
+
+        app.realTime = Date.now()
+        frame(app.realTime)
         //frame(0)
     }
 

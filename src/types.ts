@@ -34,6 +34,7 @@ import { Texture } from "./types/classes/Texture"
 */
 
 import { FPSCounter } from "./types/fps"
+import { SocketIoCtx } from "./types/functions/socketio"
 
 /**
  * Initialize kaboom context. The starting point of all kaboom games.
@@ -67,7 +68,7 @@ import { FPSCounter } from "./types/fps"
  * k.vec2(...)
  * ```
  */
-declare function kaboom(options?: KaboomOpt): KaboomCoreCtx | KaboomCtx
+declare function kaboom(options?: KaboomOpt): KaboomCoreCtx | KaboomNetworkCtx | KaboomCtx
 
 /**
  * Context handle that contains every kaboom function.
@@ -166,7 +167,7 @@ export interface KaboomCoreCtx {
 	 *     sprite("froggy"),
 	 * ])
 	 * ```
-	 */
+	*/
 	pos(x: number, y: number): PosCoreComp,
 	pos(xy: number): PosCoreComp,
 	pos(p: Vec2): PosCoreComp,
@@ -1102,6 +1103,10 @@ export interface KaboomCoreCtx {
 	 * @since v3000.0
 	 */
 	VERSION: string,
+}
+
+export interface KaboomNetworkCtx extends KaboomCoreCtx {
+	socketFunc: (createServer: any, Server: any) => SocketIoCtx,
 }
 
 export interface KaboomCtx extends KaboomCoreCtx, AudioCtx, CamCtx, DrawCtx, FontCtx, KeyCtx, MouseCtx, ScreenCtx, ShaderCtx, SpriteCtx, TextCtx, TouchCtx, VirtualCtx {
